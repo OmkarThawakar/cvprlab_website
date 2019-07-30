@@ -2,104 +2,42 @@
 {% load static %}
 {% block content %}
 
-
-
     <main class="mt-5 pt-5">
-        <div class="container">
 
             {% for year, pubs in year_wise.items %}
-                <h1>{{ year }}</h1>
-                {% for pub in pubs %}
-                    <h3>{{ pub.title }}</h3>
-                {% endfor %}
+                <div class="container">
+                <h1 class="h3 text-center mb-5">{{ year }}</h1>
+                <div vlass="'row">
+                        <!--Grid column-->
+                          <table class="table table-bordered table-striped mb-0">
+                            <thead>
+                              <tr>
+                                <th scope="col" width="100px"><h5 class="black-text">Type</h5></th>
+                                <th scope="col"><h5 class="black-text">Publications</h5></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            {% for pub in pubs %}
+                              <tr>
+                                <th scope="row">{{ pub.type }}</th>
+                                <td>
+                                    {{ pub.authors }} "{{ pub.title }}", in <i class="green-text">{{ pub.publisher }}</i>,{{ pub.year }}.<a class="pink-text" href="{{ pub.pdf }}"> (pdf)</a> <b class="blue-text"> (Impact factor {{ pub.impact_factor }} )</b>
+                                </td>
+                              </tr>
+
+                            {% endfor %}
+                            </tbody>
+                          </table>
+
+                        </div>
+
+                      </div>
+                      <!--Grid column-->
+                    </div>
+                <!-- end row-->
+                <br>
             {% endfor %}
 
-            <h4 class="h3 mb-4">2019</h4>
-
-            <ul class="list-group">
-              <li class="list-group-item">
-                  [J21]. Monu Verma, Santosh K Vipparthi, Girdhari Singh and Subrahmanyam Murala, “LEARNet: Dynamic Imaging Network for Micro Expression Recognition,” IEEE Transactions on Image Processing, 2019. (Accepted). (PDF). (Impact Factor: 6.79)
-              </li>
-
-              <li class="list-group-item list-group-item-primary">
-                [J20]. Prashant W Patil and Subrahmanyam Murala, “MSFgNet: A Novel Compact End-to-End Deep Network for Moving Object Detection,” IEEE Transactions on Intelligent Transportation Systems, 2019. (Accepted). (PDF). (Impact Factor: 5.744)
-              </li>
-
-              <li class="list-group-item list-group-item-secondary">
-                [J19]. Murari Mandal, Monu Verma, Sonakshi Mathur, Santosh Vipparthi, Subrahmanyam Murala, Kranthi D, “RADAP: Regional Adaptive Affinitive Patterns with Logical Operators for Facial Expression Recognition,” IET Image Processing, 2019. (Accepted). (PDF). (Impact Factor: 2.004)
-              </li>
-
-              <li class="list-group-item list-group-item-success">
-                [J18]. Akshay Dudhane and Subrahmanyam Murala, “Cardinal color fusion network for single image haze removal,” Machine Vision and Applications, 30 (2), pp. 231-242, 2019. (PDF). (Impact Factor: 1.788)
-              </li>
-
-              <hr class="my-4">
-
-              <li class="list-group-item list-group-item-danger">
-                [C20] Akshay Dudhane and Subrahmanyam Murala, “CDNet: Single Image De-Hazing Using Unpaired Adversarial Training,” WACV-2019, pp. 1147-1155, Waikoloa Village, Hawaii, USA, 2019. (PDF).
-              </li>
-
-              <li class="list-group-item list-group-item-warning">
-                [C19]  Prashant W. Patil and Subrahmanyam Murala, “FgGAN: A Cascaded Unpaired Learning for Background Estimation and Foreground Segmentation,”, WACV-2019, pp. 1770-1778, Waikoloa Village, Hawaii, USA, 2019. (Accepted) (PDF).
-              </li>
-
-              <li class="list-group-item list-group-item-info">
-                [C18] Akshay Dudhane and Subrahmanyam Murala, “RI-GAN: An End-To-End Network for Single Image Haze Removal,”, CVPRW-2019, USA, 2019. (Accepted)
-              </li>
-
-              <li class="list-group-item list-group-item-light">
-                [C17] Prashant W Patil, Akshay Dudhane, Subrahmanyam Murala, “Motion Saliency Based Generative Adversarial Network For Underwater Moving Object Segmentation,” ICIP-2019, Taipei, Taiwan, 2019. (Accepted)
-              </li>
-
-              <li class="list-group-item list-group-item-dark">
-                [C16] Praful Hambarde, Akshay Dudhane, Subrahmanyam Murala, “Single Image Depth Estimation Using Deep Adversarial Training,“ ICIP-2019, Taipei, Taiwan, 2019. (Accepted)
-              </li>
-
-              <li class="list-group-item list-group-item-info">
-                [C15] Omkar Thawakar, Prashant Patil, Akshay D, Subrahmanyam Murala and Uday Kulkarni, “Image and Video Super Resolution using Recurrent Generative Adversarial Network,” AVSS-2019, Taipei, Taiwan, 2019. (Accepted)
-              </li>
-
-              <li class="list-group-item list-group-item-summary">
-                [C14] Sachin Chaudhary, Akshay D and Subrahmanyam Murala, “Pose Guided Dynamic Image Network for Human Action Recognition in Person Centric Videos,” AVSS-2019, Taipei, Taiwan, 2019. (Accepted)
-              </li>
-
-            </ul>
-
-            </br>
-
-            <h4 class="h3 mb-4">2018</h4>
-
-            <ul class="list-group">
-              <li class="list-group-item">
-                  [J17]. Murari Mandal Santosh Kumar Vipparthi, Mallika Chaudhary, Subrahmanyam Murala, A. B. Gonde and S. K. Nagar, “ANTIC: ANTithetic Isomeric Cluster Patterns for Medical Image Retrieval and Change Detection” IET Computer Vision, 2018. (Accepted) (Impact Factor: 1.683)
-              </li>
-
-              <li class="list-group-item list-group-item-primary">
-                [J16]. Sachin Chaudhary and Subrahmanyam Murala, “Depth Based End-to-End Deep Network for Human Action Recognition,”  IET Computer Vision, 2018 (Accepted) (Impact Factor: 1.683)
-              </li>
-
-              <li class="list-group-item list-group-item-secondary">
-                [C12] Sachin Chaudhary and Subrahmanyam Murala, “TSNet: Deep Network for Human Action Recognition in Hazy Videos,”, SMC-2018, Miyazaki, Japan, 2018. (Accepted)
-              </li>
-
-              <li class="list-group-item list-group-item-success">
-                [C11] Prashant W. Patil , Subrahmanyam Murala, Abhinav Dhall and Sachin Chaudhary, “MsEDNet: Multi-Scale Deep Saliency Learning for Moving Object Detection,”, SMC-2018, Miyazaki, Japan, 2018. (Accepted)
-              </li>
-
-              <li class="list-group-item list-group-item-danger">
-                [C10] Murari Mandal, Prafulla Saxena, Santosh Kumar Vipparthi and Subrahmanyam Murala, “CANDID: Robust Change Dynamics and Deterministic Update Policy for Dynamic Background Subtraction,'” ICPR-2018, Beijing, China, 2018. (Accepted)
-              </li>
-
-              <li class="list-group-item list-group-item-warning">
-                [C9]  Akshay Dudhane and Subrahmanyam Murala, “C2MSNet: A novel approach for single image haze removal,” WACV-2018, Lake Tahoe, USA, 2018. (Accepted) (PDF).
-              </li>
-
-              
-            </ul>
-
-
-        </div>
     </main>
-    <!--Main layout-->
 
-   {% endblock %}
+{% endblock %}

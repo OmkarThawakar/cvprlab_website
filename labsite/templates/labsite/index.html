@@ -96,62 +96,12 @@
                   </tr>
                 </thead>
                 <tbody>
+                {% for news_ in news %}
                   <tr>
-                    <th scope="row">[July 29]</th>
-                    <td>ONE paper ACCEPTED in IEEE TIP.</td>
+                    <th scope="row">{{ news_.date }}</th>
+                    <td>{{ news_.news }}</td>
                   </tr>
-                  <tr>
-                    <th scope="row">[July 19]</th>
-                    <td>TWO papers ACCEPTED in AVSS-2019.</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">[May 19]</th>
-                    <td>TWO papers ACCEPTED in ICIP-2019.</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">[April 19]</th>
-                    <td>ONE paper ACCEPTED in CVPRW-2019 (NTIRE).</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">[April 19]</th>
-                    <td>ONE paper ACCEPTED in IEEE TIP.</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">[Feb. 19] </th>
-                    <td>ONE paper ACCEPTED in IET IP.</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">[Jan. 19]</th>
-                    <td>ONE paper ACCEPTED in MVAP.</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">[Nov. 18]</th>
-                    <td>TWO papers ACCEPTED in WACV-2019.</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">[Nov. 18]</th>
-                    <td>ONE paper ACCEPTED in ICVGIP-2018.</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">[Oct.18]</th>
-                    <td>ONE paper ACCEPTED in IEEE T ITS</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">[Aug.18] </th>
-                    <td>TWO papers ACCEPTED in IET CV</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">[Aug.18]</th>
-                    <td>Received the GPU grant from NVIDIA</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">[July18]</th>
-                    <td>TWO papers ACCEPTED in SMC-2018</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">[April18]</th>
-                    <td>ONE paper ACCEPTED in ICPR-2018</td>
-                  </tr>
+                {% endfor %}
                 </tbody>
               </table>
 

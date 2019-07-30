@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
-from labsite.models import Member, Publication
+from labsite.models import Member, Publication, News
 
 # Create your views here.
 
@@ -9,12 +9,13 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return render(request, template_name='labsite/index.html', context={'name': 'Omkar'})
+    news = News.objects.all().order_by('-date')
+    print('='*50)
+    return render(request, template_name='labsite/index.html', context={'news': news})
 
 
 def publications(request):
     pubs = Publication.objects.all().order_by('-date')
-
     year_wise = {}
     for pub in pubs:
         key = str(pub.date.year)
@@ -23,7 +24,6 @@ def publications(request):
 
         else:
             year_wise[key] = [pub]
-
 
     return render(request, template_name='labsite/publications.html', context={'year_wise': year_wise})
 

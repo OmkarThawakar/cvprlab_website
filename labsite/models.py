@@ -9,8 +9,9 @@ class Publication(models.Model):
     type = models.CharField(max_length=100, choices=[('Conf', 'Conference'), ('Journal', 'Journal')])
     publisher = models.CharField(max_length=100)
     date = models.DateField(default=datetime.datetime.now)
-    pdf = models.CharField(max_length=1000, null=True)
-    code = models.CharField(max_length=1000, null=True)
+    pdf = models.CharField(max_length=1000, blank=True, default='')
+    code = models.CharField(max_length=1000, blank=True, default='')
+    impact_factor = models.FloatField(max_length=5, blank=True, default='')
 
     def __str__(self):
         return self.title
@@ -35,6 +36,14 @@ class GalleryImage(models.Model):
     caption = models.CharField(max_length=400)
     date = models.DateField(default=datetime.datetime.now)
     path = models.ImageField()
+
+class News(models.Model):
+    news = models.CharField(max_length=500)
+    date = models.DateField(default=datetime.datetime.now)
+
+    def __str__(self):
+        return self.news
+
 
 
 
