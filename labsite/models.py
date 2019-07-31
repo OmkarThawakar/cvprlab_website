@@ -33,9 +33,13 @@ class Member(models.Model):
 
 
 class GalleryImage(models.Model):
-    caption = models.CharField(max_length=400)
+    caption = models.CharField(max_length=500)
     date = models.DateField(default=datetime.datetime.now)
-    path = models.ImageField()
+    image = models.FileField(upload_to='gallery_image',default='')
+
+    def __str__(self):
+        return self.caption
+        
 
 class News(models.Model):
     news = models.CharField(max_length=500)
@@ -43,6 +47,19 @@ class News(models.Model):
 
     def __str__(self):
         return self.news
+
+class Projects(models.Model):
+    domain = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=500)
+    date = models.DateField(default=datetime.datetime.now)
+    photo = models.FileField(upload_to='gallery_image',default='')
+    title = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.title
+
+
 
 
 

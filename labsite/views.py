@@ -1,16 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
-from labsite.models import Member, Publication, News
+from labsite.models import Member, Publication, News, Projects, GalleryImage
 
 # Create your views here.
 
 from django.http import HttpResponse
 
-
 def home(request):
     news = News.objects.all().order_by('-date')
-    print('='*50)
     return render(request, template_name='labsite/index.html', context={'news': news})
 
 
@@ -29,13 +27,17 @@ def publications(request):
 
 
 def projects(request):
-    return render(request, template_name='labsite/projects.html')
+    projects = Projects.objects.all().order_by('-date')
+    return render(request, template_name='labsite/projects.html', context={'projects': projects})
 
 def peoples(request):
     return render(request, template_name='labsite/members.html')
 
 def gallery(request):
-    return render(request, template_name='labsite/gallery.html')
+    images = GalleryImage.objects.all().order_by('-date')
+    for img in images:
+        print('img ::: ',img.image.url)
+    return render(request, template_name='labsite/gallery.html', context={'images':images})
 
 
 
