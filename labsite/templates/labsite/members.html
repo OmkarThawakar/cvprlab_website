@@ -17,13 +17,39 @@
                     <!-- Grid column -->
                     <div class="col-md-4 offset-md-1 mx-3 my-3">
 
-                      <!-- Featured image -->
-                      <div class="view overlay">
-                        <img src="{% static 'labsite/img/murala_sir2.jpg' %}" class="img-fluid" alt="Sample image for first version of blog listing">
-                        <a>
-                          <div class="mask rgba-white-slight"></div>
-                        </a>
-                      </div>
+                      <!-- Card Wider -->
+                        <div class="card-cascade wider">
+
+                          <!-- Card image -->
+                          <div class="view view-cascade overlay">
+                            <img  class="card-img-top" src="{% static 'labsite/img/murala_sir2.jpg' %}" alt="Card image cap">
+                            <a href="#!">
+                              <div class="mask rgba-white-slight"></div>
+                            </a>
+                          </div>
+
+                          <!-- Card content -->
+                          <div class="card-body card-body-cascade text-center pb-0">
+
+
+                            <!-- Text -->
+                            <p class="card-text">Email : subbumurala@iitrpr.ac.in </p
+                            <p class="card-text">Phone No :  +91 1881 230074 </p
+                            <p class="card-text">Room No : #313 </p
+                            <p class="card-text">CVPR Lab : #404 </p>
+
+
+                            <!-- Linkedin -->
+                            <a class="px-2 fa-lg li-ic" href="https://in.linkedin.com/in/subrahmanyam-murala-b5114716"><i class="fab black-text fa-linkedin-in"></i></a>
+                            <!-- Twitter -->
+                            <a class="px-2 fa-lg tw-ic" href="https://scholar.google.co.in/citations?user=5lGnNQoAAAAJ&hl=en"><i class="fab black-text fa-google"></i></a>
+                            <!-- Dribbble -->
+                            <a class="px-2 fa-lg fb-ic" href="https://dblp.uni-trier.de/search?q=subrahmanyam%20murala"><i class="fas black-text fa-user-secret"></i></a>
+
+                          </div>
+
+                        </div>
+                        <!-- Card Wider -->
 
                     </div>
                     <!-- Grid column -->
@@ -33,18 +59,23 @@
 
                       <!-- Excerpt -->
                       <a href="#!" class="green-text">
-                        <h6 class="h6 pb-1"><i class="fas fa-desktop pr-1"></i>Lab Incharge</h6>
+                        <h6 class="h6 pb-1"><i class="fas fa-desktop pr-1"></i>Head of Lab</h6>
                       </a>
 
                       <h4 class="h4 mb-4">Dr. Subrahmanyam Murala</h4>
 
-                      <p class="font-weight-normal">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque, totam
-                        rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                        dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur.
+                      <p class="font-weight-normal text-justify">
+                          Dr. Subrahmanyam Murala received his B.E. degree in Electrical and Electronics Engineering from Andhra University, Andhra Pradesh, India, in 2007.
+                          Afterwards, he received his M.Tech. and Ph.D. degrees from the Department of Electrical Engineering,
+                          Indian Institute of Technology Roorkee, Roorkee, India, in 2009 and 2012 respectively.
+                          He was a Post-Doctoral Researcher in the Department of Electrical and Computer Engineering at University of Windsor,
+                          Windsor, ON, Canada from July 01, 2012 to June 30, 2014. Currently, He is working as an Assistant Professor in the
+                          Department of Electrical Engineering, IIT Ropar, Rupnagar, Punjab, India. His major ﬁelds of interests are Image Retrieval,
+                          Computer Vision, Medical Image Processing and Object Tracking.
                       </p>
-                      <p class="font-weight-normal"><a><strong>Assistant Professor,</strong></a> Department of Electrical Engineering,  IIT Ropar</p>
+                      <p class="font-weight-normal"><a><strong>Assistant Professor,</strong></a> Department of Electrical Engineering,  IIT Ropar-140001, India.</p>
 
-                      <a class="btn btn-success" href="http://www.iitrpr.ac.in/subbumurala/">Read more</a>
+                      <a class="btn btn-success text-center" href="http://www.iitrpr.ac.in/subbumurala/">Read more</a>
 
                     </div>
                     <!-- Grid column -->
@@ -65,13 +96,15 @@
 
             <div class='row'>
 
-                <div class='col'>
+                {% for scholar in peoples.scholars %}
+
+                <div class='col-md-4 p-3'>
                     <!-- Card Regular -->
                     <div class="card card-cascade">
 
                       <!-- Card image -->
                       <div class="view view-cascade overlay">
-                        <img class="card-img-top" src="{% static 'labsite/img/sachin_sir2.jpg' %}" alt="Card image cap">
+                        <img class="card-img-top" src="{{ scholar.profile_pic.url }}" alt="Card image cap">
                         <a>
                           <div class="mask rgba-white-slight"></div>
                         </a>
@@ -81,244 +114,36 @@
                       <div class="card-body card-body-cascade text-center">
 
                         <!-- Title -->
-                        <h4 class="card-title"><strong>Sachin Chaudhary</strong></h4>
-                        <!-- Subtitle -->
-                        <h6 class="font-weight-bold indigo-text py-2">Human Action Recognition</h6>
-                        <!-- Text -->
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere modi sunt, quod quibusdam.
-                        </p>
+                        <h4 class="card-title"><strong><a href="{% url 'my_blog' user_id=scholar.user.id %}">{{ scholar.user.first_name }} {{ scholar.user.last_name }}</a></strong></h4>
 
-                        <!-- LinkedIn -->
-                        <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
-                        <!-- Twitter -->
-                        <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
-                        <!-- Dribbble -->
-                        <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
-
-                      </div>
-
-                      <!-- Card footer -->
-                      <div class="card-footer text-muted text-center">
-                        <strong class="green-text">PhD Completed!</strong>
-                      </div>
-
-                    </div>
-                    <!-- Card Regular -->
-
-                </div>
-
-                <div class='col'>
-                    <!-- Card Regular -->
-                    <div class="card card-cascade">
-
-                      <!-- Card image -->
-                      <div class="view view-cascade overlay">
-                        <img class="card-img-top" src="{% static 'labsite/img/akshay_sir.jpg' %}" alt="Card image cap">
-                        <a>
-                          <div class="mask rgba-white-slight"></div>
-                        </a>
-                      </div>
-
-                      <!-- Card content -->
-                      <div class="card-body card-body-cascade text-center">
-
-                        <!-- Title -->
-                        <h4 class="card-title"><strong>Akshay Dudhane</strong></h4>
-                        <!-- Subtitle -->
-                        <h6 class="font-weight-bold indigo-text py-2">Single Image Haze Removal</h6>
-                        <!-- Text -->
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere modi sunt, quod quibusdam.
-                        </p>
-
-                        <!-- LinkedIn -->
-                        <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
-                        <!-- Twitter -->
-                        <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
-                        <!-- Dribbble -->
-                        <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
-
-                      </div>
-
-                      <!-- Card footer -->
-                      <div class="card-footer text-muted text-center">
-                        PhD On Going!
-                      </div>
-
-                    </div>
-                    <!-- Card Regular -->
-                </div>
-
-                <div class='col'>
-                    <!-- Card Regular -->
-                    <div class="card card-cascade">
-
-                      <!-- Card image -->
-                      <div class="view view-cascade overlay">
-                        <img class="card-img-top" src="{% static 'labsite/img/prashant_sir.jpg' %}" alt="Card image cap">
-                        <a>
-                          <div class="mask rgba-white-slight"></div>
-                        </a>
-                      </div>
-
-                      <!-- Card content -->
-                      <div class="card-body card-body-cascade text-center">
-
-                        <!-- Title -->
-                        <h4 class="card-title"><strong>Prashant Patil</strong></h4>
-                        <!-- Subtitle -->
-                        <h6 class="font-weight-bold indigo-text py-2">Moving Object Detection</h6>
-                        <!-- Text -->
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere modi sunt, quod quibusdam.
-                        </p>
-
-                        <!-- Linkedin -->
-                        <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
-                        <!-- Twitter -->
-                        <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
-                        <!-- Dribbble -->
-                        <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
-
-                      </div>
-
-                      <!-- Card footer -->
-                      <div class="card-footer text-muted text-center">
-                        PhD On Going!
-                      </div>
-
-                    </div>
-                    <!-- Card Regular -->
-                </div>
-
-            </div>
-            <!--row-->
-
-            </br>
-
-            <div class='row'>
-
-                <div class='col'>
-                    <!-- Card Regular -->
-                    <div class="card card-cascade">
-
-                      <!-- Card image -->
-                      <div class="view view-cascade overlay">
-                        <img class="card-img-top" src="{% static 'labsite/img/praful_sir.jpg' %}" alt="Card image cap">
-                        <a>
-                          <div class="mask rgba-white-slight"></div>
-                        </a>
-                      </div>
-
-                      <!-- Card content -->
-                      <div class="card-body card-body-cascade text-center">
-
-                        <!-- Title -->
-                        <h4 class="card-title"><strong>Praful Hambarde</strong></h4>
-                        <!-- Subtitle -->
-                        <h6 class="font-weight-bold indigo-text py-2">Depth Estimation</h6>
-                        <!-- Text -->
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere modi sunt, quod quibusdam.
-                        </p>
-
-                        <!-- LinkedIn -->
-                        <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
-                        <!-- Twitter -->
-                        <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
-                        <!-- Dribbble -->
-                        <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
-
-                      </div>
-
-                      <!-- Card footer -->
-                      <div class="card-footer text-muted text-center">
-                        PhD On Going!
-                      </div>
-
-                    </div>
-                    <!-- Card Regular -->
-
-                </div>
-
-                <div class='col'>
-                    <!-- Card Regular -->
-                    <div class="card card-cascade">
-
-                      <!-- Card image -->
-                      <div class="view view-cascade overlay">
-                        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/men.jpg" alt="Card image cap">
-                        <a>
-                          <div class="mask rgba-white-slight"></div>
-                        </a>
-                      </div>
-
-                      <!-- Card content -->
-                      <div class="card-body card-body-cascade text-center">
-
-                        <!-- Title -->
-                        <h4 class="card-title"><strong>Shruti Phutke</strong></h4>
-                        <!-- Subtitle -->
-                        <h6 class="font-weight-bold indigo-text py-2">Fake Colorization Detection</h6>
-                        <!-- Text -->
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere modi sunt, quod quibusdam.
-                        </p>
-
-                        <!-- LinkedIn -->
-                        <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
-                        <!-- Twitter -->
-                        <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
-                        <!-- Dribbble -->
-                        <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
-
-                      </div>
-
-                      <!-- Card footer -->
-                      <div class="card-footer text-muted text-center">
-                        PhD On Going!
-                      </div>
-
-                    </div>
-                    <!-- Card Regular -->
-                </div>
-
-                <div class='col'>
-                    <!-- Card Regular -->
-                    <div class="card card-cascade">
-
-                      <!-- Card image -->
-                      <div class="view view-cascade overlay">
-                        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/men.jpg" alt="Card image cap">
-                        <a>
-                          <div class="mask rgba-white-slight"></div>
-                        </a>
-                      </div>
-
-                      <!-- Card content -->
-                      <div class="card-body card-body-cascade text-center">
-
-                        <!-- Title -->
-                        <h4 class="card-title"><strong>New Scholer</strong></h4>
                         <!-- Subtitle -->
                         <h6 class="font-weight-bold indigo-text py-2">Research Topic</h6>
                         <!-- Text -->
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere modi sunt, quod quibusdam.
+                        <p class="card-text">{{ scholar.info }}
                         </p>
 
-                        <!-- Linkedin -->
-                        <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
+                        <!-- LinkedIn -->
+                        <a class="px-2 fa-lg li-ic" href="{{ scholar.linkedin }}"><i class="fab black-text fa-linkedin-in"></i></a>
                         <!-- Twitter -->
-                        <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
+                        <a class="px-2 fa-lg tw-ic" href="{{ scholar.google_scholar }}"><i class="fab black-text fa-google"></i></a>
                         <!-- Dribbble -->
-                        <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
+                        <a class="px-2 fa-lg fb-ic" href="{{ scholar.dblp }}"><i class="fas black-text fa-user-secret"></i></a>
 
                       </div>
 
                       <!-- Card footer -->
                       <div class="card-footer text-muted text-center">
-                        PhD On Going!
+                        <strong class="green-text">{{ scholar.member.phd }}</strong>
                       </div>
 
                     </div>
                     <!-- Card Regular -->
+
                 </div>
+
+                {% endfor %}
+
+
 
             </div>
             <!--row-->
@@ -333,90 +158,37 @@
             <h4 class="h3 mb-4">M.Tech Students</h4>
 
             <div class='row'>
+                  {% for student in peoples.mtech %}
 
-                <!-- Card deck -->
-                <div class="card-deck">
+                <div class='col-md-4 p-3'>
+                    <!-- Card Regular -->
+                    <div class="card card-cascade">
 
-                  <!-- Card -->
-                  <div class="card mb-4">
+                      <!-- Card image -->
+                      <div class="view view-cascade overlay">
+                        <img class="card-img-top" src="{{ student.profile_pic.url }}" alt="Card image cap">
+                        <a href="{{ student.personal_link }}">
+                          <div class="mask rgba-white-slight"></div>
+                        </a>
+                      </div>
 
-                    <!--Card image-->
-                    <div class="view overlay">
-                      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap">
-                      <a href="#!">
-                        <div class="mask rgba-white-slight"></div>
-                      </a>
-                    </div>
+                      <!-- Card content -->
+                      <div class="card-body card-body-cascade text-center">
 
-                    <!--Card content-->
-                    <div class="card-body">
+                        <!-- Title -->
+                        <h4 class="card-title"><strong>{{ student.user.first_name }} {{ student.user.last_name }}</strong></h4>
+                        <!-- Text -->
+                        <p class="card-text">{{ student.info }}
+                        </p>
 
-                      <!--Title-->
-                      <h4 class="card-title">Shubhangi Nema</h4>
-                      <!--Text-->
-                      <p class="card-text">Work on Biomedical Image Processing with Image to Image Translation using Generative Adversarial Network. </p>
-                      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                      <button type="button" class="btn btn-light-blue btn-md">Read more</button>
-
-                    </div>
-
-                  </div>
-                  <!-- Card -->
-
-                  <!-- Card -->
-                  <div class="card mb-4">
-
-                    <!--Card image-->
-                    <div class="view overlay">
-                      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg" alt="Card image cap">
-                      <a href="#!">
-                        <div class="mask rgba-white-slight"></div>
-                      </a>
-                    </div>
-
-                    <!--Card content-->
-                    <div class="card-body">
-
-                      <!--Title-->
-                      <h4 class="card-title">Student Name</h4>
-                      <!--Text-->
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                      <button type="button" class="btn btn-light-blue btn-md">Read more</button>
+                      </div>
 
                     </div>
-
-                  </div>
-                  <!-- Card -->
-
-                  <!-- Card -->
-                  <div class="card mb-4">
-
-                    <!--Card image-->
-                    <div class="view overlay">
-                      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg" alt="Card image cap">
-                      <a href="#!">
-                        <div class="mask rgba-white-slight"></div>
-                      </a>
-                    </div>
-
-                    <!--Card content-->
-                    <div class="card-body">
-
-                      <!--Title-->
-                      <h4 class="card-title">Student Name</h4>
-                      <!--Text-->
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                      <button type="button" class="btn btn-light-blue btn-md">Read more</button>
-
-                    </div>
-
-                  </div>
-                  <!-- Card -->
+                    <!-- Card Regular -->
 
                 </div>
-                <!-- Card deck -->
+
+                {% endfor %}
  
             </div>
 
@@ -432,14 +204,16 @@
 
             <div class='row'>
 
-                <div class='col'>
+                {% for student in peoples.btech %}
+
+                <div class='col-md-4 p-3'>
                     <!-- Card Regular -->
                     <div class="card card-cascade">
 
                       <!-- Card image -->
                       <div class="view view-cascade overlay">
-                        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/men.jpg" alt="Card image cap">
-                        <a>
+                        <img class="card-img-top" src="{{ student.profile_pic.url }}" alt="Card image cap">
+                        <a href="{{ student.personal_link }}">
                           <div class="mask rgba-white-slight"></div>
                         </a>
                       </div>
@@ -448,9 +222,9 @@
                       <div class="card-body card-body-cascade text-center">
 
                         <!-- Title -->
-                        <h4 class="card-title"><strong>Student Name</strong></h4>
+                        <h4 class="card-title"><strong>{{ student.user.first_name }} {{ student.user.last_name }}</strong></h4>
                         <!-- Text -->
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere modi sunt, quod quibusdam.
+                        <p class="card-text">{{ student.info }}
                         </p>
 
                       </div>
@@ -460,61 +234,7 @@
 
                 </div>
 
-                <div class='col'>
-                    <!-- Card Regular -->
-                    <div class="card card-cascade">
-
-                      <!-- Card image -->
-                      <div class="view view-cascade overlay">
-                        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/men.jpg" alt="Card image cap">
-                        <a>
-                          <div class="mask rgba-white-slight"></div>
-                        </a>
-                      </div>
-
-                      <!-- Card content -->
-                      <div class="card-body card-body-cascade text-center">
-
-                        <!-- Title -->
-                        <h4 class="card-title"><strong>Student Name</strong></h4>
-                        
-                        <!-- Text -->
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere modi sunt, quod quibusdam.
-                        </p>
-
-                      </div>
-
-                    </div>
-                    <!-- Card Regular -->
-                </div>
-
-                <div class='col'>
-                    <!-- Card Regular -->
-                    <div class="card card-cascade">
-
-                      <!-- Card image -->
-                      <div class="view view-cascade overlay">
-                        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/men.jpg" alt="Card image cap">
-                        <a>
-                          <div class="mask rgba-white-slight"></div>
-                        </a>
-                      </div>
-
-                      <!-- Card content -->
-                      <div class="card-body card-body-cascade text-center">
-
-                        <!-- Title -->
-                        <h4 class="card-title"><strong>Student Name</strong></h4>
-                        
-                        <!-- Text -->
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere modi sunt, quod quibusdam.
-                        </p>
-
-                      </div>
-
-                    </div>
-                    <!-- Card Regular -->
-                </div>
+                {% endfor %}
 
             </div>
             <!--row-->
@@ -529,14 +249,16 @@
 
             <div class='row'>
 
-                <div class='col'>
+                {% for intern in peoples.interns %}
+
+                <div class='col-md-4 p-3'>
                     <!-- Card -->
                     <div class="card">
 
                       <!-- Card image -->
                       <div class="view overlay">
-                        <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
-                        <a href="#!">
+                        <img class="card-img-top" src="{{ intern.profile_pic.url }}" alt="Card image cap">
+                        <a href="{{ intern.personal_link }}">
                           <div class="mask rgba-white-slight"></div>
                         </a>
                       </div>
@@ -545,11 +267,11 @@
                       <div class="card-body">
 
                         <!-- Title -->
-                        <h4 class="card-title">Omkar Thawakar</h4>
+                        <h4 class="card-title">{{ intern.user.first_name }} {{ intern.user.last_name }}</h4>
                         <!-- Text -->
-                        <p class="card-text">Worked on Image and Video Super-Resolution with Recurrent Generative Adversarial Network.</p>
+                        <p class="card-text">{{ intern.info }}</p>
                         <!-- Button -->
-                        <a href="https://omkarthawakar.github.io" class="btn btn-primary">See More</a>
+                        <a href="{{ intern.personal_link }}" class="btn btn-primary">See More</a>
 
                       </div>
 
@@ -558,59 +280,8 @@
 
                 </div>
 
-                <div class='col'>
-                    <div class="card">
+                {% endfor %}
 
-                      <!-- Card image -->
-                      <div class="view overlay">
-                        <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
-                        <a href="#!">
-                          <div class="mask rgba-white-slight"></div>
-                        </a>
-                      </div>
-
-                      <!-- Card content -->
-                      <div class="card-body">
-
-                        <!-- Title -->
-                        <h4 class="card-title">Pranav Gajjewar</h4>
-                        <!-- Text -->
-                        <p class="card-text">Worked on Real Time Piston Ring Segmentation with Image to Image Traslation.</p>
-                        <!-- Button -->
-                        <a href="#" class="btn btn-primary">See More</a>
-
-                      </div>
-
-                    </div>
-                    <!-- Card -->
-                </div>
-
-                <div class='col'>
-                    
-                    <div class="card">
-                      <!-- Card image -->
-                      <div class="view overlay">
-                        <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
-                        <a href="#!">
-                          <div class="mask rgba-white-slight"></div>
-                        </a>
-                      </div>
-
-                      <!-- Card content -->
-                      <div class="card-body">
-
-                        <!-- Title -->
-                        <h4 class="card-title">Student Name</h4>
-                        <!-- Text -->
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <!-- Button -->
-                        <a href="#" class="btn btn-primary">See More</a>
-
-                      </div>
-
-                    </div>
-                    <!-- Card -->
-                </div>
 
             </div>
             <!--row-->
