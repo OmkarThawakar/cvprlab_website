@@ -166,7 +166,6 @@
 
                 <h2 class="my-5 h3 text-center">Publications</h2>
 
-                {% for pub in publications %}
                 <div class="container">
                 <div vlass="'row">
                         <!--Grid column-->
@@ -178,12 +177,20 @@
                               </tr>
                             </thead>
                             <tbody>
+                            {% for pub in publications %}
                               <tr>
                                 <th scope="row">{{ pub.type }}</th>
-                                <td>
-                                    {{ pub.authors }} "{{ pub.title }}", in <i class="blue-text font-weight-bold">{{ pub.publisher }}</i>,{{ pub.year }}.<a class="green-text" href="{{ pub.pdf }}"> (pdf)</a> <b class="red-text"> (Impact factor {{ pub.impact_factor }} )</b>
-                                </td>
+                                  {% if pub.type == "Journal" %}
+                                    <td>
+                                        {{ pub.authors }} "{{ pub.title }}", in <i class="blue-text font-weight-bold">{{ pub.publisher }}</i>,{{ pub.year }}.<a class="green-text" href="{{ pub.pdf }}"> (pdf)</a> <b class="red-text"> (Impact factor {{ pub.impact_factor }} )</b>
+                                    </td>
+                                  {% else %}
+                                    <td>
+                                        {{ pub.authors }} "{{ pub.title }}", in <i class="blue-text font-weight-bold">{{ pub.publisher }}</i>,{{ pub.year }}.<a class="green-text" href="{{ pub.pdf }}"> (pdf)</a>
+                                    </td>
+                                  {% endif %}
                               </tr>
+                            {% endfor %}
                             </tbody>
                           </table>
 
@@ -194,7 +201,6 @@
                     </div>
                 <!-- end row-->
                 <br>
-            {% endfor %}
 
             </section>
             <!--Publication Section ends-->

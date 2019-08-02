@@ -1,9 +1,6 @@
 from django.db import models
 import datetime
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-
 
 class Publication(models.Model):
     title = models.CharField(max_length=500)
@@ -18,14 +15,12 @@ class Publication(models.Model):
     def __str__(self):
         return self.title
 
-
 class Member(models.Model):
     type_choices = [
                     ('M.Tech', 'M.Tech'),
                     ('B.Tech', 'B.Tech'),
                     ('Intern', 'Intern'),
                     ('Research Scholar', 'Research Scholar')]
-
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     info = models.fields.CharField(max_length=500)
@@ -39,7 +34,6 @@ class Member(models.Model):
 
     def __str__(self):
         return self.user.username
-
 
 class ResearchScholar(models.Model):
     type_choices = [('Completed', 'Completed'),
@@ -57,10 +51,8 @@ class ResearchScholar(models.Model):
     video = models.FileField(upload_to='video', default='')
     phd = models.fields.CharField(max_length=100, choices=type_choices)
 
-
     def __str__(self):
         return self.member.user.username
-
 
 class GalleryImage(models.Model):
     caption = models.CharField(max_length=500)
@@ -69,7 +61,6 @@ class GalleryImage(models.Model):
 
     def __str__(self):
         return self.caption
-        
 
 class News(models.Model):
     news = models.CharField(max_length=500)
@@ -83,16 +74,8 @@ class Projects(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
     date = models.DateField(default=datetime.datetime.now)
-    photo = models.FileField(upload_to='gallery_image',default='')
+    photo = models.FileField(upload_to='gallery_image', default='')
     title = models.CharField(max_length=500)
 
     def __str__(self):
         return self.title
-
-
-
-
-
-
-
-

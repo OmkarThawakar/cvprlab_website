@@ -14,13 +14,27 @@ def home(request):
 
 def publications(request):
     pubs = Publication.objects.all().order_by('-date')
+    total_conf = Publication.objects.filter(type='Conf').count()
+    total_journal = Publication.objects.filter(type='Journal').count()
     year_wise = {}
     for pub in pubs:
         key = str(pub.date.year)
-        if key in year_wise.keys():
-            year_wise[key].append(pub)
+        if key not in year_wise.keys():
+            year_wise[key] = {'Journal':[], 'Conf':[]}
+            if pub.type == 'Conf':
+                year_wise[key]['Conf'].append({'pub':pub,'num':total_conf})
+                total_conf-=1
+            else:
+                year_wise[key]['Journal'].append({'pub':pub,'num':total_journal})
+                total_journal-=1
+
         else:
-            year_wise[key] = [pub]
+            if pub.type == 'Conf':
+                year_wise[key]['Conf'].append({'pub':pub,'num':total_conf})
+                total_conf-=1
+            else:
+                year_wise[key]['Journal'].append({'pub':pub,'num':total_journal})
+                total_journal-=1
     return render(request, template_name='labsite/publications.html', context={'year_wise': year_wise})
 
 def projects(request):

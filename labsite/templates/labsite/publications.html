@@ -1,43 +1,50 @@
 {% extends 'labsite/base.html' %}
 {% load static %}
+
 {% block content %}
 
     <main class="mt-5 pt-5">
 
             {% for year, pubs in year_wise.items %}
+
                 <div class="container">
                 <h1 class="h3 text-center mb-5">{{ year }}</h1>
+                {% for type_,publications in pubs.items %}
                 <div vlass="'row">
                         <!--Grid column-->
                           <table class="table table-bordered table-striped mb-0">
                             <thead>
                               <tr>
-                                <th scope="col" width="100px"><h5 class="black-text">Type</h5></th>
+                                <th scope="col" width="100px"><h5 class="black-text">{{ type_ }}</h5></th>
                                 <th scope="col"><h5 class="black-text">Publications</h5></th>
                               </tr>
                             </thead>
                             <tbody>
-                            {% for pub in pubs %}
+                            {% for pub in publications %}
                               <tr>
-                                <th scope="row">{{ pub.type }}</th>
-                                <td >
-                                    {{ pub.authors }} "{{ pub.title }}", in <i class="blue-text font-weight-bold">{{ pub.publisher }}</i>,{{ pub.year }}.<a class="green-text" href="{{ pub.pdf }}"> (pdf)</a> <b class="red-text"> (Impact factor {{ pub.impact_factor }} )</b>
-                                </td>
-                              </tr>
 
+                                <th scope="row">{{ pub.pub.type }} - {{ pub.num }}</th>
+                                {% if pub.pub.type == 'Journal' %}
+                                    <td >
+                                    {{ pub.pub.authors }} "{{ pub.pub.title }}", in <i class="blue-text font-weight-bold">{{ pub.pub.publisher }}</i>{{ pub.pub.year }}<a class="green-text" href="{{ pub.pub.pdf }}"> (pdf)</a> <b class="red-text"> (Impact factor {{ pub.pub.impact_factor }} )</b>
+                                    </td>
+                                {% else %}
+                                    <td >
+                                    {{ pub.pub.authors }} "{{ pub.pub.title }}", in <i class="blue-text font-weight-bold">{{ pub.pub.publisher }}</i>{{ pub.pub.year }}<a class="green-text" href="{{ pub.pub.pdf }}"> (pdf)</a>
+                                    </td>
+                                {% endif %}
+                              </tr>
                             {% endfor %}
                             </tbody>
                           </table>
-
-                        </div>
-
-                      </div>
-                      <!--Grid column-->
-                    </div>
-                <!-- end row-->
+                </div>
+                {% endfor %}
+                <br>
+                <!--row ends-->
+                </div>
+                <!--Grid container-->
                 <br>
             {% endfor %}
-
     </main>
 
 {% endblock %}
