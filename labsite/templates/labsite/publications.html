@@ -20,8 +20,8 @@
                             {% for pub in pubs %}
                               <tr>
                                 <th scope="row">{{ pub.type }}</th>
-                                <td>
-                                    {{ pub.authors }} "{{ pub.title }}", in <i class="green-text">{{ pub.publisher }}</i>,{{ pub.year }}.<a class="pink-text" href="{{ pub.pdf }}"> (pdf)</a> <b class="blue-text"> (Impact factor {{ pub.impact_factor }} )</b>
+                                <td >
+                                    {{ pub.authors }} "{{ pub.title }}", in <i class="blue-text font-weight-bold">{{ pub.publisher }}</i>,{{ pub.year }}.<a class="green-text" href="{{ pub.pdf }}"> (pdf)</a> <b class="red-text"> (Impact factor {{ pub.impact_factor }} )</b>
                                 </td>
                               </tr>
 

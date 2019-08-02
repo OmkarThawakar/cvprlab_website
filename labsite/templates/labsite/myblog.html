@@ -1,0 +1,217 @@
+{% extends 'labsite/base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <!--Main layout-->
+    <main class="mt-5 pt-5">
+        <div class="container">
+
+
+        <div class='row'>
+
+                <!-- News jumbotron -->
+                <div class="jumbotron text-center hoverable p-4">
+
+                  <!-- Grid row -->
+                  <div class="row">
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 offset-md-1 mx-3 my-3">
+
+                      <!-- Grid column -->
+                      <div class="col-xl-12 col-md-4 mb-10 text-center">
+
+                        <img src="{{ scholar.blog_photo.url }}" class="img-fluid z-depth-2 rounded-circle"
+                          alt="Responsive image">
+
+                      </div>
+                      <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-7 text-md-left ml-3 mt-3">
+
+                      <!-- Excerpt -->
+                      <a href="#!" class="blue-text">
+                        <h6 class="h6 pb-1"><i class="fas fa-desktop pr-1"></i>Research Scholer</h6>
+                      </a>
+
+                      <h4 class="h4 mb-4">{{ scholar.member.user.first_name }} {{ scholar.member.user.last_name }}</h4>
+
+                        <p class="font-weight-normal">Email : {{ scholar.member.user.email }}</p>
+                        <p class="font-weight-normal">Phone : {{ scholar.contact_numbar }}</p>
+                        <p class="font-weight-normal">Address : {{ scholar.address }}</p>
+                        <p class="font-weight-normal"><a><strong class="pink-text">Research Topic : </strong></a>{{ scholar.topic }}</p>
+                        <p class="font-weight-normal"><a><strong class="pink-text">Current Position : </strong></a>{{ scholar.current_position }}</p>
+                        <p class="font-weight-normal"><a><strong class="green-text">Website : </strong></a>
+                            <a href="{{ scholar.member.personal_link }}"> {{ scholar.member.personal_link }} </a>
+                        </p>
+
+
+                    </div>
+                    <!-- Grid column -->
+
+                  </div>
+                  <!-- Grid row -->
+                </div>
+                <!-- News jumbotron -->
+
+            </div>
+            <!--row-->
+            <hr class="mb-5">
+
+              <!--Section: Education -->
+              <section>
+
+                <h2 class="my-5 h3 text-center">Education</h2>
+
+                  <div class="row features-small mt-5 wow fadeIn">
+                      <table class="table table-bordered table-striped mb-0">
+                            <thead>
+                              <tr>
+                                <th scope="col" width="100px"><h5 class="black-text">Course</h5></th>
+                                <th scope="col"><h5 class="black-text">Institute</h5></th>
+
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                              <tr>
+                                <th scope="row">B.Tech</th>
+                                <td scope="row">{{ scholar.b_tech }} </td>
+                              </tr>
+                            <tr>
+                                <th scope="row">M.Tech</th>
+                                <td scope="row">{{ scholar.m_tech }} </td>
+                              </tr>
+                            <tr>
+                                <th scope="row">Ph.D</th>
+                                <td scope="row">CVPR Lab, Department of Electrical Engineering, IIT Ropar, India.</td>
+                              </tr>
+
+
+                            </tbody>
+                          </table>
+
+                  </div>
+
+                <!--Grid column-->
+
+              </section>
+              <!--Section: Education-->
+
+            <hr class="mb-5">
+
+              <!--Section: About Research Topic-->
+              <section>
+
+                <h2 class="my-5 h3 text-center">About Research Topic</h2>
+
+                <!--First row-->
+                <div class="row features-small mt-5 wow fadeIn">
+
+                    <p class="black-text mt-2">{{ scholar.abstract }}</p>
+                </div>
+                  <div class="row features-small mt-5 wow fadeIn">
+                      <p class="black-text mt-2">My Research Objectives are as follows :
+                    </p>
+                    <ul>
+                    {% for obj in objectives  %}
+                        <li>
+                        {{ obj }}
+                        </li>
+                    {% endfor %}
+                    </ul>
+                  </div>
+
+
+              </section>
+              <!--Section: About Research Topic-->
+
+              <hr class="my-5">
+
+              <!--Introductory Video Section-->
+
+              <section>
+
+                <h2 class="my-5 h3 text-center">Introductory Video About Research Topic</h2>
+
+              <!--Carousel Wrapper-->
+                <div id="video-carousel-example" class="carousel slide carousel-fade" data-ride="carousel">
+
+                  <!--/.Indicators-->
+                  <!--Slides-->
+                  <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                      <video class="video-fluid" autoplay loop muted>
+                        <source src="{{ scholar.video.url }}" type="video/mp4" />
+                      </video>
+                    </div>
+
+                  <!--/.Slides-->
+
+
+                </div>
+                <!--Carousel Wrapper-->
+            </section>
+            <!--Ends Introductory Video-->
+
+            <hr class="my-5">
+
+            <!--Publication Section starts-->
+            <section>
+
+                <h2 class="my-5 h3 text-center">Publications</h2>
+
+                {% for pub in publications %}
+                <div class="container">
+                <div vlass="'row">
+                        <!--Grid column-->
+                          <table class="table table-bordered table-striped mb-0">
+                            <thead>
+                              <tr>
+                                <th scope="col" width="100px"><h5 class="black-text">Type</h5></th>
+                                <th scope="col"><h5 class="black-text">Publications</h5></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">{{ pub.type }}</th>
+                                <td>
+                                    {{ pub.authors }} "{{ pub.title }}", in <i class="blue-text font-weight-bold">{{ pub.publisher }}</i>,{{ pub.year }}.<a class="green-text" href="{{ pub.pdf }}"> (pdf)</a> <b class="red-text"> (Impact factor {{ pub.impact_factor }} )</b>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                        </div>
+
+                      </div>
+                      <!--Grid column-->
+                    </div>
+                <!-- end row-->
+                <br>
+            {% endfor %}
+
+            </section>
+            <!--Publication Section ends-->
+
+
+
+
+        </div>
+    </main>
+    <!--Main layout-->
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,41 +1,59 @@
 {% extends 'labsite/base.html' %}
+
+
 {% block content %}
 
-<main class="text-center mt-5 mb-5">
-<div class="container pt-5">
-<section class="form-simple pt-5">
-    <!--Form with header-->
-    <div class="card wow fadeInUp">
-        <!--Header-->
-        <div class="header pt-3 primary-color lighten-2">
-            <div class="text-center">
-                <h3 class="white-text mt-3 mb-4 pb-1 mx-5">Log in</h3>
+<head>
+    <style>
+        body, html {
+          height: 100%;
+        }
+        .bg {
+          /* The image used */
+          background-image: url('/static/labsite/img/img2.png');
+
+          /* Full height */
+          height: 100%;
+
+          /* Center and scale the image nicely */
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+
+    </style>
+</head>
+<body class="justify-content-center">
+
+    <div class="bg text-center">
+        <main class="text-center mt-5 mb-5 col-6 col-md-4">
+        <div class="view full-page-intro text-center ">
+
+            <div class="pt-5 justify-content-center">
+            <!-- Default form subscription -->
+            <form class="text-center border border-light p-5" method="post">
+                {% csrf_token %}
+                <p class="h4 mb-4">SIGN-IN</p>
+                <!-- Name -->
+                <input type="text" name="username" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Username">
+
+                <!-- Password -->
+                <input name="password" type="password" id="defaultSubscriptionFormEmail" class="form-control mb-4" placeholder="Password">
+
+                <!-- Sign in button -->
+                <button class="btn btn-info btn-block" type="submit">Sign in</button>
+            </form>
             </div>
+            <!-- Default form subscription -->
+
         </div>
-        <!--Header-->
-        <div class="card-body mx-4 mt-4">
-        <form method="post">
-          {% csrf_token %}
-            <!--Body-->
-            <div class="md-form">
-                <input name="username" type="text">
-                <label for="Form-name">Username : </label>
-            </div>
-            <div class="md-form pb-3">
-                <input name="password" type="password">
-                <label for="Form-password">Password : </label>
-                <p class="font-small grey-text d-flex justify-content-end">Forgot <a href="#" class="dark-grey-text font-bold ml-1"> Password?</a></p>
-            </div>
-            <div class="text-center mb-4">
-                <button type="submit" class="btn btn-deep-orange" >Log-In</button>
-            </div>
-            <p class="font-small grey-text d-flex justify-content-center">Don't have an account? <a href="#" class="dark-grey-text font-bold ml-1"> Sign up</a></p>
-        </form>
-        </div>
+        </main>
+
     </div>
-    <!--/Form with header-->
-</section>
-</div>
-</main>
+
+
+</body>
+
+
 
 {% endblock %}

@@ -1,6 +1,8 @@
 from django.db import models
 import datetime
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Publication(models.Model):
@@ -18,18 +20,46 @@ class Publication(models.Model):
 
 
 class Member(models.Model):
-
-    type_choices = [('Supervisor', 'Supervisor'),
+    type_choices = [
                     ('M.Tech', 'M.Tech'),
                     ('B.Tech', 'B.Tech'),
                     ('Intern', 'Intern'),
                     ('Research Scholar', 'Research Scholar')]
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    info = models.fields.TextField()
+    name = models.CharField(max_length=100)
+    info = models.fields.CharField(max_length=500)
     type = models.fields.CharField(max_length=100, choices=type_choices)
-    profile_pic = models.ImageField()
-    publications = models.ManyToManyField(Publication)
+    profile_pic = models.FileField(upload_to='people', default='')
+    personal_link = models.URLField(default='',blank=True)
+    research_topic = models.CharField(max_length=200)
+    linkedin = models.URLField(default='',blank=True)
+    google_scholar = models.URLField(default='',blank=True)
+    dblp = models.URLField(default='',blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+
+class ResearchScholar(models.Model):
+    type_choices = [('Completed', 'Completed'),
+                    ('On Going', 'On Going')]
+    member = models.OneToOneField(Member, on_delete=models.CASCADE)
+    contact_numbar = models.IntegerField(max_length=13)
+    address = models.CharField(max_length=200,default='CVPR Lab, IIT Ropar,India')
+    blog_photo = models.FileField(upload_to='blog_photo', default='')
+    topic = models.CharField(max_length=200, default='Coming Soon!')
+    current_position = models.CharField(max_length=200, default='Research Scholar, CVPR Lab, EED')
+    b_tech = models.CharField(max_length=200, default='')
+    m_tech = models.CharField(max_length=200, default='')
+    abstract = models.TextField(max_length=1000)
+    objectives = models.CharField(max_length=500, default='')
+    video = models.FileField(upload_to='video', default='')
+    phd = models.fields.CharField(max_length=100, choices=type_choices)
+
+
+    def __str__(self):
+        return self.member.user.username
 
 
 class GalleryImage(models.Model):

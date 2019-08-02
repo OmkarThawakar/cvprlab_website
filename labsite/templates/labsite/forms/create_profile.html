@@ -1,0 +1,78 @@
+{% extends 'labsite/base.html' %}
+
+{% block content %}
+
+<main class=" pt-5">
+<div class="container pt-5">
+    <section class="form-simple pt-5 pb-5">
+    <!--Form with header-->
+    <div class="card wow fadeInUp">
+        <!--Header-->
+        <div class="header pt-3 default-color lighten-3">
+            <div class="text-center">
+                <h3 class="white-text mt-3 mb-4 pb-1 mx-5">Create-Profile</h3>
+            </div>
+        </div>
+        <!--Header-->
+        <div class="card-body mx-4 mt-4">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="md-form">
+                <i class="fas fa-signature prefix grey-text"></i>>
+                {{ user_form.name }}
+                <label for="orangeForm-name">Name</label>
+            </div>
+            <div class="md-form">
+                <i class="fas fa-briefcase prefix grey-text"></i>
+                {{ user_form.info }}
+                <label for="orangeForm-name" >Work-Info</label>
+            </div>
+            <div class="md-form">
+
+                {{ user_form.type }}
+                <label for="orangeForm-name" class=" animated bounce infinite ">Type</label>
+            </div>
+            <div class="md-form">
+                <i class="fa fa-user prefix grey-text"></i>
+                {{ user_form.profile_pic }}
+                <label for="orangeForm-pass" class=" animated bounce infinite " >Profile-Pic</label>
+            </div>
+            <div class="md-form">
+                <i class="fas fa-link prefix  grey-text"></i>
+                {{ user_form.personal_link }}
+                <label for="orangeForm-pass" >Personal Link</label>
+            </div>
+            <div class="md-form">
+                <i class="fas fa-link prefix  grey-text"></i>
+                {{ user_form.research_topic }}
+                <label for="orangeForm-pass" >Research Topic</label>
+            </div>
+            <div class="md-form">
+                <i class="fas fa-link prefix  grey-text"></i>
+                {{ user_form.linkedin }}
+                <label for="orangeForm-pass" >Linked-In</label>
+            </div>
+            <div class="md-form">
+                <i class="fas fa-link prefix  grey-text"></i>
+                {{ user_form.google_scholar }}
+                <label for="orangeForm-pass" >Google Scholar</label>
+            </div>
+            <div class="md-form">
+                <i class="fas fa-link prefix  grey-text"></i>
+                {{ user_form.dblp }}
+                <label for="orangeForm-pass" >DBLP</label>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-default" type="submit">Create Profile</button>
+            </div>
+        </form>
+        </div>
+    </div>
+
+</section>
+</div>
+</main>
+
+
+{% endblock %}
+

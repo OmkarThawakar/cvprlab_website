@@ -1,0 +1,34 @@
+
+{% extends 'labsite/base.html' %}
+
+
+{% block content %}
+<main class="text-center pt-5">
+<div class="container pt-5">
+    <section class="form-simple pt-5 pb-5">
+    <!--Form with header-->
+    <div class="card wow fadeInUp">
+        <!--Header-->
+        <div class="header pt-3 default-color lighten-3">
+            <div class="text-center">
+                <h3 class="white-text mt-3 mb-4 pb-1 mx-5">Blog Form</h3>
+            </div>
+        </div>
+        <!--Header-->
+        <div class="card-body mx-4 mt-4 text-center">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            <div class="text-center">
+                <button class="btn btn-default" type="submit">Create Blog</button>
+            </div><br>
+        </form>
+        </div>
+    </div>
+
+</section>
+</div>
+</main>
+{% endblock %}
+
+
