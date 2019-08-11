@@ -70,12 +70,15 @@ class News(models.Model):
         return self.news
 
 class Projects(models.Model):
+    project_choices = [('Completed', 'Completed'),
+                    ('On Going', 'On Going')]
     domain = models.CharField(max_length=50)
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
     date = models.DateField(default=datetime.datetime.now)
     photo = models.FileField(upload_to='gallery_image', default='')
     title = models.CharField(max_length=500)
+    status = models.fields.CharField(max_length=100, choices=project_choices, default='')
 
     def __str__(self):
         return self.title

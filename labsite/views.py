@@ -38,8 +38,9 @@ def publications(request):
     return render(request, template_name='labsite/publications.html', context={'year_wise': year_wise})
 
 def projects(request):
-    projects = Projects.objects.all().order_by('-date')
-    return render(request, template_name='labsite/projects.html', context={'projects': projects})
+    completed_projects = Projects.objects.filter(status='Completed').order_by('-date')
+    ongoing_projects = Projects.objects.filter(status='On Going').order_by('-date')
+    return render(request, template_name='labsite/projects.html', context={'completed_projects': completed_projects,'ongoing_projects':ongoing_projects})
 
 def MyBlog(request, user_id):
     user = get_object_or_404(User, pk=user_id)

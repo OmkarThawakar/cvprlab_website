@@ -6,7 +6,7 @@
     <main class="mt-5 pt-5">
         <div class="container">
 
-            {% for project in projects %}
+            {% for project in ongoing_projects %}
 
                 <div class='row'>
 
@@ -41,7 +41,8 @@
                       <h4 class="h4 mb-4">{{ project.title }}</h4>
 
                       <p class="font-weight-normal">{{ project.description }}</p>
-                      <p class="font-weight-normal">by <a><strong>Contributors</strong></a>, {{ project.date }}</p>
+                      <p class="font-weight-normal black-text"><a><strong></strong></a>{{ project.date }}</p>
+                        <p class="font-weight-normal "><a><strong>Status : </strong></a> <b class="green-text">{{ project.status }}</b></p>
 
                       <a class="btn blue-gradient">Read more</a>
 
@@ -58,6 +59,62 @@
                 <!--row-->
 
             {% endfor %}
+
+            <hr class="md-bg">
+
+            {% for project in completed_projects %}
+
+                    <div class='row'>
+
+                    <!-- News jumbotron -->
+                    <div class="jumbotron text-center hoverable p-4 embed-responsive">
+
+                      <!-- Grid row -->
+                      <div class="row">
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 offset-md-1 mx-3 my-3 ">
+
+                          <!-- Featured image -->
+                          <div class="view overlay">
+                            <img src="{{ project.photo.url }}" class="img-fluid" alt="Sample image for first version of blog listing">
+                            <a>
+                              <div class="mask rgba-white-slight"></div>
+                            </a>
+                          </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-7 text-md-left ml-3 mt-3">
+
+                          <!-- Excerpt -->
+                          <a href="#!" class="indigo-text">
+                            <h6 class="h6 pb-1"><i class="fas fa-project-diagram pr-1"></i>{{ project.domain }}</h6>
+                          </a>
+
+                          <h4 class="h4 mb-4">{{ project.title }}</h4>
+
+                          <p class="font-weight-normal">{{ project.description }}</p>
+                          <p class="font-weight-normal black-text"><a><strong></strong></a>{{ project.date }}</p>
+                            <p class="font-weight-normal "><a><strong>Status : </strong></a> <b class="green-text"> {{ project.status }} </b></p>
+
+                          <a class="btn blue-gradient">Read more</a>
+
+                        </div>
+                        <!-- Grid column -->
+
+                      </div>
+                      <!-- Grid row -->
+
+                    </div>
+                    <!-- News jumbotron -->
+
+                    </div>
+                    <!--row-->
+
+                {% endfor %}
 
         </div>
     </main>

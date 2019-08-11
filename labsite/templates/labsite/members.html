@@ -90,7 +90,7 @@
 
             <hr class="my-4">
 
-            <h4 class="h3 mb-4">Research Scholers</h4>
+            <h4 class="h3 mb-4">Research Scholars</h4>
 
             <!--------- PHD Student Section start here ------------->
 
@@ -133,7 +133,7 @@
 
                       <!-- Card footer -->
                       <div class="card-footer text-muted text-center">
-                        <strong class="green-text">{{ scholar.member.phd }}</strong>
+                        <strong class="green-text">PhD {{ scholar.researchscholar.phd}}</strong>
                       </div>
 
                     </div>
@@ -176,7 +176,7 @@
                       <div class="card-body card-body-cascade text-center">
 
                         <!-- Title -->
-                        <h4 class="card-title"><strong>{{ student.user.first_name }} {{ student.user.last_name }}</strong></h4>
+                        <h4 class="card-title"><strong><a href="{{ student.personal_link }}"></a>{{ student.user.first_name }} {{ student.user.last_name }}</strong></h4>
                         <!-- Text -->
                         <p class="card-text">{{ student.info }}
                         </p>
